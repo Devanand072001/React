@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';  
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import BlogCards from './BlogCard'
 
 function App() {
   var sampleObj = new Object();
@@ -28,6 +29,39 @@ function App() {
     backgroundColor: 'lightgrey',
     borderRadius: '5px',
   };
+
+
+  //dynamic elements
+  const blogArray = [
+    {
+      'title': 'Blog title 1',
+      'description': ' Lorem Ipsum DolorLorem Ipsum DolorLorem Ipsum DolorLorem Ipsum Dolor'
+    },
+    {
+      'title': 'Blog title 2',
+      'description': ' Lorem Ipsum DolorLorem Ipsum DolorLorem Ipsum DolorLorem Ipsum Dolor'
+    },
+    {
+      'title': 'Blog title 3',
+      'description': ' Lorem Ipsum DolorLorem Ipsum DolorLorem Ipsum DolorLorem Ipsum Dolor'
+    }
+  ]
+  
+  const blogCards = blogArray.map((items) => {
+    // console.table(items);
+    return (
+      <div className="col-lg-4 ">
+        <div class="card mx-auto border-dark mb-3" >
+          <div class="card-header">Header</div>
+          <div class="card-body text-dark">
+            <h5 class="card-title">{items.title}</h5>
+            <p class="card-text">{items.description}</p>
+          </div>
+        </div>
+      </div>
+      // <BlogCards/>
+    )
+  })
   return (
     <div className="App" class="text-center">
       <div class="container"><h1>hello world <br></br> Name: {displayName()}</h1>
@@ -40,7 +74,7 @@ function App() {
 
 
       <div class="container my-5">
-        <table class="table  table-hover" style={tableCss}>
+        <table class="table mx-auto w-75 table-hover" style={tableCss}>
           <thead>
             <tr>
               <th>Name:</th>
@@ -82,33 +116,45 @@ function App() {
           </figure>
         </div>
       </div>
-      <div class="container my-3">
-        <div class="row g-2 bg-info ${1| ,row-cols-2,row-cols-3, auto,justify-content-md-center,|}">
-        <div class="col-6">
-      <div class="p-3 border bg-light">Custom column padding</div>
-    </div>
-    <div class="col-6">
-      <div class="p-3 border bg-light">Custom column padding</div>
-    </div>
-    <div class="col-6">
-      <div class="p-3 border bg-light">Custom column padding</div>
-    </div>
-    <div class="col-6">
-      <div class="p-3 border bg-light">Custom column padding</div>
-    </div>
+
+      <div className="container">
+        <div class="row mx-auto my-auto g-3">
+          <div class="col-lg-4">
+            <div className="card mx-auto text-white bg-primary   ">
+
+              <div className="card-header">Header</div>
+              <div className="card-body">
+                <h5 className="card-title">{blogArray[0].title}</h5>
+                <p className="card-text">{blogArray[0].description}</p>
+              </div>
+            </div></div>
+          <div class="col-lg-4">
+            <div className="card mx-auto text-white bg-secondary " >
+              <div className="card-header">Header</div>
+              <div className="card-body">
+                <h5 className="card-title">{blogArray[1].title}</h5>
+                <p className="card-text">{blogArray[1].description}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card text-white bg-dark mx-auto w-100" >
+              <div class="card-header">Header</div>
+              <div class="card-body">
+                <h5 class="card-title">{blogArray[2].title}</h5>
+                <p class="card-text">{blogArray[2].description}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="container overflow-hidden">
-  
-</div>
-
-      {/* <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-        crossorigin="anonymous"
-      /> */}
+      <div class="container my-5 ">
+        <div class="display-5 my-5">Dynamic elements</div>
+        <div class="row mx-auto my-auto g-3">
+          {blogCards}
+        </div>
+      </div>
     </div>
 
   );
